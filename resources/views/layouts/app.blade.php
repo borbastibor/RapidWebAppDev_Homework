@@ -62,10 +62,15 @@
             </div>
             @include('menu')
         </nav>
-
+        @include('carousel')
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    <footer class="bg-dark text-white text-center p-2">
+        Copyright © 2010 - {{ date('Y') }} Szeghalmi Mentőalapítvány.<br>
+        Original website: <a href="http://szeghalmimentoalapitvany.hu/" target="_blank">Szeghalmi Mentőalapítvány</a><br>
+        Designed by Borbás Tibor
+    </footer>
 </body>
 </html>
