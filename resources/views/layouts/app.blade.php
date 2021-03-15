@@ -10,8 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -29,13 +35,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Bejelentkezés') }}</a>
+                                    <a class="nav-link text-white font-weight-bold" href="{{ route('login') }}">{{ __('Bejelentkezés') }}</a>
                                 </li>
                             @endif
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Regisztráció') }}</a>
+                                    <a class="nav-link text-white font-weight-bold" href="{{ route('register') }}">{{ __('Regisztráció') }}</a>
                                 </li>
                             @endif
                         @else
@@ -72,5 +78,6 @@
         Original website: <a href="http://szeghalmimentoalapitvany.hu/" target="_blank">Szeghalmi Mentőalapítvány</a><br>
         Designed by Borbás Tibor
     </footer>
+    @stack('scripts')
 </body>
 </html>

@@ -10001,3 +10001,9 @@ h3 {
     border-color: #dee2e6;
   }
 }
+
+.input-hidden {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
