@@ -10,9 +10,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">Admin</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item text-dark" href="{{ url('users') }}">Felhasználók</a></li>
-                        <li><a class="dropdown-item text-dark" href="{{ url('messages') }}">Üzenetek</a></li>
-                        <li><a class="dropdown-item text-dark" href="{{ url('files') }}">Fájlok</a></li>
+                        <li><a class="dropdown-item text-dark" href="{{ route('users.index') }}">Felhasználók</a></li>
+                        <li><a class="dropdown-item text-dark" href="{{ route('messages.index') }}">Üzenetek</a></li>
+                        <li><a class="dropdown-item text-dark" href="{{ route('files.index') }}">Fájlok</a></li>
                     </ul>
                 </li>
             @endif

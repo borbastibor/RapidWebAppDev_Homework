@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container-fluid">
@@ -7,7 +7,7 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Beérkezett üzenetek') }}</div>
                 <div class="card-body">
-                    <table class="table table-sm table-bordered">
+                    <table class="table table-hover table-sm table-bordered text-center">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Név</th>
@@ -19,11 +19,14 @@
                         </thead>
                         @foreach ($messages as $message)
                             <tr>
-                                <td>{{ $message->name }}</td>
-                                <td>{{ $message->email }}</td>
-                                <td>{{ $message->created_at }}</td>
-                                <td>{{ $message->message }}</td>
-                                <td></td>
+                                <td class="align-middle">{{ $message->name }}</td>
+                                <td class="align-middle">{{ $message->email }}</td>
+                                <td class="align-middle">{{ $message->created_at }}</td>
+                                <td class="align-middle">{{ $message->message }}</td>
+                                <td>
+                                    <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
+                                    <a class="btn bg-danger text-white font-weight-bold" href="">Töröl</a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

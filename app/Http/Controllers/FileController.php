@@ -57,7 +57,13 @@ class FileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = null;
+
+        if ($id != 0) {
+            $data = File::find($id);
+        }
+
+        return view('admin_file_edit', ['data' => $data]);
     }
 
     /**

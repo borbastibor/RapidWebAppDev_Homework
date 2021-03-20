@@ -57,7 +57,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = null;
+
+        if ($id != 0) {
+            $data = User::find($id);
+        }
+
+        return view('admin_user_edit', ['data' => $data]);
     }
 
     /**

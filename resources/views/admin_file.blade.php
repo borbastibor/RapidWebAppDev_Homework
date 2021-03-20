@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container-fluid">
@@ -7,7 +7,8 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Feltöltött fájlok') }}</div>
                 <div class="card-body">
-                    <table class="table table-sm table-bordered">
+                    <a class="btn bg-success text-white font-weight-bold mb-3" href="{{ route('files.edit', ['file' => 0]) }}">Fájl hozzáadása</a>
+                    <table class="table table-hover table-sm table-bordered text-center">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Fájlnév</th>
@@ -20,12 +21,15 @@
                         </thead>
                         @foreach ($files as $file)
                             <tr>
-                                <td>{{ $file->orig_name }}</td>
-                                <td>{{ $file->description }}</td>
-                                <td>{{ $file->type }}</td>
-                                <td>{{ $file->created_at }}</td>
-                                <td>{{ $file->user->name }}</td>
-                                <td></td>
+                                <td class="align-middle">{{ $file->orig_name }}</td>
+                                <td class="align-middle">{{ $file->description }}</td>
+                                <td class="align-middle">{{ $file->type }}</td>
+                                <td class="align-middle">{{ $file->created_at }}</td>
+                                <td class="align-middle">{{ $file->user->name }}</td>
+                                <td>
+                                    <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
+                                    <a class="btn bg-danger text-white font-weight-bold" href="">Töröl</a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

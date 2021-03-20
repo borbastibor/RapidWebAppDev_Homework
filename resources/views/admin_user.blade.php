@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container-fluid">
@@ -7,7 +7,8 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Felhasználók') }}</div>
                 <div class="card-body">
-                    <table class="table table-sm table-bordered">
+                    <a class="btn bg-success text-white font-weight-bold mb-3" href="{{ route('users.edit', ['user' => 0]) }}">Új felhasználó</a>
+                    <table class="table table-hover table-sm table-bordered text-center">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Név</th>
@@ -19,11 +20,20 @@
                         </thead>
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
-                                <td>{{ $user->role }}</td>
-                                <td></td>
+                                <td class="align-middle">{{ $user->name }}</td>
+                                <td class="align-middle">{{ $user->email }}</td>
+                                <td class="align-middle">{{ $user->created_at }}</td>
+                                <td class="align-middle">
+                                    @if ($user->role == 0)
+                                        admin
+                                    @else
+                                        regisztrált felhasználó
+                                    @endif
+                                </td>
+                                <td>
+                                    <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
+                                    <a class="btn bg-danger text-white font-weight-bold" href="">Töröl</a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>
