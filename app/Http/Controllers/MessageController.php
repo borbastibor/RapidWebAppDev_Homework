@@ -10,11 +10,11 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-        return Message::get();
+        return view('admin_message', ['messages' => Message::get()]);
     }
 
     /**

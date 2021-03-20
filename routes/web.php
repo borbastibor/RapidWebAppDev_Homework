@@ -25,6 +25,7 @@ Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index']);
 Route::get('/supporter', [App\Http\Controllers\SupportController::class, 'index']);
 Route::get('/gallery', [App\Http\Controllers\GalleryController::class, 'index']);
+Route::post('/gallery/store', [App\Http\Controllers\GalleryController::class, 'store']);
 Route::post('/contact/store', [App\Http\Controllers\ContactController::class, 'store']);
 Route::resource('files', App\Http\Controllers\FileController::class)->except(['show']);
 Route::resource('messages', App\Http\Controllers\MessageController::class)->except(['show', 'create']);

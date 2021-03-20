@@ -10,14 +10,32 @@
                     @if (Auth::user())
                         <div>
                             <input type="file" class="input-hidden" id="fileinput" name="fileinput"/>
-                            <button id="upload_file" class="btn btn-success font-weight-bold">Kép feltöltése</button>
+                            <button id="upload_file" class="btn btn-success font-weight-bold mb-2">Kép feltöltése</button>
+                            <input type="text" class="form-control" id="imagetext" name="imagetext" placeholder="képfelirat..."/>
+                            <hr>
                         </div>
-                    @endif                  
+                    @endif
+                    
+                    <div class="d-flex flex-wrap">
+                        @foreach ($images as $image)
+                            <div class="m-3">
+                                <a href="{{ url('storage/' . $image->id . '.' . $image->extension) }}" target="_blank">
+                                    <img src="{{ url('storage/' . $image->id . '.' . $image->extension) }}" class="img-thumbnail" style="width:200px; height:200px;"/>
+                                </a>
+                                <div class="container-fluid p-0 m-0 text-center text-wrap" style="width:200px;">{{ $image->description }}</div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="data-div"
+    id="data_store"
+    data-post_route={{ url('/gallery/store') }}
+    data-csrf_token={{ csrf_token() }}
+></div>
 @endsection
 
 @push('scripts')
