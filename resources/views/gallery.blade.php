@@ -20,7 +20,7 @@
                         @foreach ($images as $image)
                             <div class="m-3">
                                 <a href="{{ url('storage/' . $image->id . '.' . $image->extension) }}" target="_blank">
-                                    <img src="{{ url('storage/' . $image->id . '.' . $image->extension) }}" class="img-thumbnail" style="width:200px; height:200px;"/>
+                                    <img src="{{ url('storage/' . $image->id . '.' . $image->extension) }}" class="img-thumbnail shadow" style="width:200px; height:200px;"/>
                                 </a>
                                 <div class="container-fluid p-0 m-0 text-center text-wrap" style="width:200px;">{{ $image->description }}</div>
                             </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File;
+use Exception;
+use Illuminate\Http\Response;
 
 class FileController extends Controller
 {
@@ -86,6 +88,12 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $file = File::find($id);
+            $file->delete();
+        } catch (Exception $e) {
+            return new Response('Hiba a törlés során!', 500);
+        }
     }
+
 }

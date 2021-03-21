@@ -25,7 +25,7 @@
                                 <td class="align-middle">{{ $message->message }}</td>
                                 <td>
                                     <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
-                                    <a class="btn bg-danger text-white font-weight-bold" href="">Töröl</a>
+                                    <a class="btn bg-danger text-white font-weight-bold" name="delitem" href="{{ route('messages.destroy', ['message' => $message->id]) }}">Töröl</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -36,3 +36,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('js/admin_message.js') }}"></script>
+@endpush

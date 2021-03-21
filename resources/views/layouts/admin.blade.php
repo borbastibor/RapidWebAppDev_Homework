@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/common.js') }}"></script>
     <script>
         $.ajaxSetup({
             headers: {

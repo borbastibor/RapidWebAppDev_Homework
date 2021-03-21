@@ -28,7 +28,7 @@
                                 <td class="align-middle">{{ $file->user->name }}</td>
                                 <td>
                                     <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
-                                    <a class="btn bg-danger text-white font-weight-bold" href="">Töröl</a>
+                                    <a class="btn bg-danger text-white font-weight-bold" name="delitem" href="{{ route('files.destroy', ['file' => $file->id]) }}">Töröl</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -39,3 +39,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('js/admin_file.js') }}"></script>
+@endpush

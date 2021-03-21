@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Http\Response;
 
 class MessageController extends Controller
 {
@@ -25,11 +27,18 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $new_message = new Message();
-        $new_message->name = $request->input('name');
-        $new_message->email = $request->input('email');
-        $new_message->message = $request->input('message');
-        $new_message->save();
+        try {
+            $new_message = new Message();
+            $new_message->name = $request->input('name');
+            $new_message->email = $request->input('email');
+            $new_message->message = $request->input('message');
+            $new_message->save();
+
+            return new Response('Sikeres mentés!');
+        } catch (Exception $e) {
+            return new Response('Hiba a mentéskor!', 500);
+        }
+        
     }
 
     /**
@@ -63,6 +72,13 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $message = Message::find($id);
+            $message->delete();
+
+            return new Response('Sikeres törlés!');
+        } catch (Exception $e) {
+            return new Response('Hiba a törléskor!', 500);
+        }
     }
 }

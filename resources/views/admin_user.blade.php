@@ -31,8 +31,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
-                                    <a class="btn bg-danger text-white font-weight-bold" href="">Töröl</a>
+                                    <a class="btn bg-primary text-white font-weight-bold" href="{{ route('users.edit', ['user' => $user->id]) }}">Szerkeszt</a>
+                                    <a class="btn bg-danger text-white font-weight-bold" name="delitem" href="{{ route('users.destroy', ['user' => $user->id]) }}">Töröl</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -43,3 +43,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('js/admin_user.js') }}"></script>
+@endpush
