@@ -33,8 +33,6 @@ class MessageController extends Controller
             $new_message->email = $request->input('email');
             $new_message->message = $request->input('message');
             $new_message->save();
-
-            return new Response('Sikeres mentés!');
         } catch (Exception $e) {
             return new Response('Hiba a mentéskor!', 500);
         }
@@ -49,7 +47,13 @@ class MessageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = null;
+
+        if ($id != 0) {
+            $data = Message::find($id);
+        }
+
+        return view('admin_message_edit', ['data' => $data]);
     }
 
     /**
@@ -61,7 +65,15 @@ class MessageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $message = Message::find($id);
+            $message->name = $request->input('name');
+            $message->email = $request->input('email');
+            $message->message = $request->input('message');
+            $message->save();
+        } catch (Exception $e) {
+            return new Response('Hiba a mentés során!'.$e->getMessage(), 500);
+        }
     }
 
     /**
@@ -75,8 +87,6 @@ class MessageController extends Controller
         try {
             $message = Message::find($id);
             $message->delete();
-
-            return new Response('Sikeres törlés!');
         } catch (Exception $e) {
             return new Response('Hiba a törléskor!', 500);
         }

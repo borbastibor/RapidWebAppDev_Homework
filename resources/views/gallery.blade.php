@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="data-div"
+<div style="display:none;"
     id="data_store"
     data-post_route={{ url('/gallery/store') }}
     data-csrf_token={{ csrf_token() }}

@@ -27,7 +27,7 @@
                                 <td class="align-middle">{{ $file->created_at }}</td>
                                 <td class="align-middle">{{ $file->user->name }}</td>
                                 <td>
-                                    <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
+                                    <a class="btn bg-primary text-white font-weight-bold" href="{{ route('files.edit', ['file' => $file->id]) }}">Szerkeszt</a>
                                     <a class="btn bg-danger text-white font-weight-bold" name="delitem" href="{{ route('files.destroy', ['file' => $file->id]) }}">Töröl</a>
                                 </td>
                             </tr>

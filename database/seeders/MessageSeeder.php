@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MessageSeeder extends Seeder
 {
@@ -13,6 +14,9 @@ class MessageSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('messages')->insert([
+            ['name' => 'Géza bá', 'email' => 'geza@mail.com', 'message' => 'Ez egy nagyon hasznos oldal...', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Mézga Aladár', 'email' => 'aladar@mail.com', 'message' => 'Kriszta tiszta gyagya, mert...', 'created_at' => now(), 'updated_at' => now()]
+        ]);
     }
 }

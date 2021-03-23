@@ -24,7 +24,7 @@
                                 <td class="align-middle">{{ $message->created_at }}</td>
                                 <td class="align-middle">{{ $message->message }}</td>
                                 <td>
-                                    <a class="btn bg-primary text-white font-weight-bold" href="">Szerkeszt</a>
+                                    <a class="btn bg-primary text-white font-weight-bold" href="{{ route('messages.edit', ['message' => $message->id]) }}">Szerkeszt</a>
                                     <a class="btn bg-danger text-white font-weight-bold" name="delitem" href="{{ route('messages.destroy', ['message' => $message->id]) }}">Töröl</a>
                                 </td>
                             </tr>

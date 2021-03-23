@@ -7,13 +7,34 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Fájl hozzáadása/szerkesztése') }}</div>
                 <div class="card-body">
-                    <a class="btn bg-info text-white font-weight-bold mb-3" href="{{ route('files.index') }}">&#8678; Vissza</a>
-                    <form>
-                        
+                    <a class="btn bg-info text-white font-weight-bold mb-3" id="to_list_link" href="/files">&#8678; Vissza</a>
+                    <form id="user_form">
+                        <input type="hidden" id="id" name="id" value="@if ($data) {{ $data->id }} @else {{ 0 }} @endif"/>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="name">Név:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="írja be a nevét..." value="@if ($data) {{ $data->name }} @endif" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="email">E-mail cím:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="írja be az e-mail címét..." value="@if ($data) {{ $data->email }} @endif" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="message">Üzenet:</label>
+                            <textarea class="form-control" id="message" name="message" rows="5">@if ($data) {{ $data->message }} @endif</textarea>
+                        </div>
                     </form>
+                    <button id="submit_message" class="btn btn-success font-weight-bold">Mentés</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div style="display:none;"
+    id="data_store"
+    data-post_route="@if ($data) {{ route('files.update', ['file' => $data->id]) }} @else {{ route('files.store') }} @endif"
+></div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="{{ asset('js/admin_file_edit.js') }}"></script>
+@endpush

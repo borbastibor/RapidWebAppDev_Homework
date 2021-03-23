@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Message;
+use App\Models\File;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
@@ -30,11 +30,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-            if ($this->name_exists($request->input('name'))) {
+            if (User::where('name', $request->input('name'))->exists()) {
                 return new Response('A megadott név már létezik!', 500);
             }
 
-            if ($this->email_exists($request->input('email'))) {
+            if (User::where('email', $request->input('email'))->exists()) {
                 return new Response('A megadott e-mail már létezik!', 500);
             }
 
@@ -43,8 +43,6 @@ class UserController extends Controller
             $new_user->email = $request->input('email');
             $new_user->password = Hash::make($request->input('password'));
             $new_user->save();
-
-            return new Response('Sikeres mentés!');
         } catch (Exception $e) {
             return new Response('Hiba a mentéskor!', 500);
         }
@@ -77,11 +75,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            if ($this->name_exists($request->input('name'))) {
+            if (User::where('name', $request->input('name'))->exists()) {
                 return new Response('A megadott név már létezik!', 500);
             }
 
-            if ($this->email_exists($request->input('email'))) {
+            if (User::where('email', $request->input('email'))->exists()) {
                 return new Response('A megadott e-mail már létezik!', 500);
             }
 
@@ -90,8 +88,6 @@ class UserController extends Controller
             $user->email = $request->input('email');
             $user->password = Hash::make($request->input('password'));
             $user->save();
-
-            return new Response('Sikeres mentés!');
         } catch (Exception $e) {
             return new Response('Hiba a mentés során!', 500);
         }
@@ -107,34 +103,17 @@ class UserController extends Controller
     {
         try {
             $user = User::find($id);
-            $messages = Message::where('user_id')->get();
+            $files = File::where('user_id', $id)->get();
 
-            foreach ($messages as $message) { 
-                $message->user_id = null;
-                $message->save();
+            foreach ($files as $file) { 
+                $file->user_id = null;
+                $file->save();
             }
             
             $user->delete();
-
-            return new Response('Sikeres törlés!');
         } catch (Exception $e) {
             return new Response('Hiba a törléskor!', 500);
         }
     }
 
-    private function name_exists(string $name): bool {
-        if (User::where('name', $name)->get()) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private function email_exists(string $email): bool {
-        if (User::where('email', $email)->get()) {
-            return true;
-        }
-
-        return false;
-    }
 }
