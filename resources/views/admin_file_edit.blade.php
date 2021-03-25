@@ -10,20 +10,24 @@
                     <a class="btn bg-info text-white font-weight-bold mb-3" id="to_list_link" href="/files">&#8678; Vissza</a>
                     <form id="user_form">
                         <input type="hidden" id="id" name="id" value="@if ($data) {{ $data->id }} @else {{ 0 }} @endif"/>
+                        @if ($data) <label class="font-weight-bold" for="fileinput">Feltöltött fájl: </label>{{ ' ' . $data->orig_name }} @endif
                         <div class="form-group">
-                            <label class="font-weight-bold" for="name">Név:</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="írja be a nevét..." value="@if ($data) {{ $data->name }} @endif" required/>
+                            <label class="font-weight-bold" for="fileinput">Új fájl feltöltése:</label><br>
+                            <input type="file" id="fileinput" name="fileinput" accept="image/*"/>
                         </div>
                         <div class="form-group">
-                            <label class="font-weight-bold" for="email">E-mail cím:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="írja be az e-mail címét..." value="@if ($data) {{ $data->email }} @endif" required/>
+                            <label class="font-weight-bold" for="name">Leírás:</label>
+                            <input type="text" class="form-control" id="description" name="description" placeholder="Fájl leírása (képfelirat)..." value="@if ($data) {{ $data->description }} @endif" required/>
                         </div>
                         <div class="form-group">
-                            <label class="font-weight-bold" for="message">Üzenet:</label>
-                            <textarea class="form-control" id="message" name="message" rows="5">@if ($data) {{ $data->message }} @endif</textarea>
+                            <label class="font-weight-bold" for="type">Fájl típusa:</label>
+                            <select class="form-control" id="type">
+                                <option value="image" @if ($data && $data->type == 'image') selected="true" @endif>Kép</option>
+                                <option value="other" @if ($data && $data->type == 'other') selected="true" @endif>Egyéb</option>
+                            </select>
                         </div>
                     </form>
-                    <button id="submit_message" class="btn btn-success font-weight-bold">Mentés</button>
+                    <button id="submit_file" class="btn btn-success font-weight-bold">Mentés</button>
                 </div>
             </div>
         </div>

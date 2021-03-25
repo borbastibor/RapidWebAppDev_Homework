@@ -9,7 +9,12 @@ $(function() {
         }
     });
 
-    $('#fileinput').on('change', () => {
+    $('#fileinput').on('change', (e) => {
+        if (!$('#fileinput').prop('files')[0].name.toLowerCase().match(/.(jpg|jpeg|png)$/i)) {
+            alert('Nem képet képet választott ki!');
+            return;
+        }
+    
         let form_data = new FormData()
         form_data.append('image', $('#fileinput').prop('files')[0]);
         form_data.append('imagetext', $('#imagetext').val());

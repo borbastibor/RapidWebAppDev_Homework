@@ -2,39 +2,27 @@ $(function() {
     const data_store = document.querySelector('#data_store');
 
     $('#submit_file').on('click', (e) => {
-        if ($('#name').val() == '') {
-            alert('Nem adott meg nevet!');
-
+        if ($('#description').val() == '') {
+            alert('Nem adott meg leírást!');
             return;
         }
 
-        if ($('#email').val() == '') {
-            alert('Nem adott meg e-mail címet!');
-
-            return;
+        let form_data = new FormData();
+        if ($('#id').val() != 0) {
+            form_data.append('_method', 'PUT');
         }
+        form_data.append('description', $('#description').val());
+        form_data.append('type', $('#type').val());
+        form_data.append('fileinput', $('#fileinput').prop('files')[0]);
 
-        if ($('#message').val() == '') {
-            alert('Az üzenet nem lehet üres!');
-
-            return;
-        }
-
-        let post_data = {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            message: $('#message').val()
-        }
-
-        let post_url = data_store.dataset.post_route;
-        let post_type = $('#id').val() == 0 ? 'POST' : 'PUT';
-
-        $.post({
-            type: post_type,
-            url: post_url,
-            data: post_data
+        $.ajax({
+            method: 'POST',
+            url: data_store.dataset.post_route,
+            contentType: false,
+            processData: false,
+            data: form_data
         }).done(() => {
-            window.location.replace('/messages');
+            window.location.replace('/files');
         }).fail((response) => {
             alert(response.responseText);
         });
