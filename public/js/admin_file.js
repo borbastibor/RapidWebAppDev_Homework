@@ -10,7 +10,7 @@ $(function() {
             }).done(() => {
                 window.location.reload();
             }).fail((response) => {
-                alert(response.responseText);
+                jError(response.responseText);
             });
         }
     });

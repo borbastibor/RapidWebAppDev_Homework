@@ -1,9 +1,8 @@
 $(function() {
     const data_store = document.querySelector('#data_store');
-
     $('#submit_file').on('click', (e) => {
         if ($('#description').val() == '') {
-            alert('Nem adott meg leírást!');
+            jError('Nem adott meg leírást!');
             return;
         }
 
@@ -24,7 +23,7 @@ $(function() {
         }).done(() => {
             window.location.replace('/files');
         }).fail((response) => {
-            alert(response.responseText);
+            jError(response.responseText);
         });
     });
 });

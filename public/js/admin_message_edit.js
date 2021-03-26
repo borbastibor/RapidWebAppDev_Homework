@@ -3,19 +3,19 @@ $(function() {
 
     $('#submit_message').on('click', (e) => {
         if ($('#name').val() == '') {
-            alert('Nem adott meg nevet!');
+            jError('Nem adott meg nevet!');
 
             return;
         }
 
         if ($('#email').val() == '') {
-            alert('Nem adott meg e-mail címet!');
+            jError('Nem adott meg e-mail címet!');
 
             return;
         }
 
         if ($('#message').val() == '') {
-            alert('Az üzenet nem lehet üres!');
+            jError('Az üzenet nem lehet üres!');
 
             return;
         }
@@ -36,7 +36,7 @@ $(function() {
         }).done(() => {
             window.location.replace('/messages');
         }).fail((response) => {
-            alert(response.responseText);
+            jError(response.responseText);
         });
     });
 });

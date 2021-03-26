@@ -10,7 +10,7 @@
                     @if (Auth::user())
                         <div>
                             <input type="file" class="input-hidden" id="fileinput" name="fileinput" accept="image/*"/>
-                            <button id="upload_file" class="btn btn-success font-weight-bold mb-2">Kép feltöltése</button>
+                            <button id="upload_file" class="btn btn-success font-weight-bold mb-2">&#128190; Kép feltöltése</button>
                             <input type="text" class="form-control" id="imagetext" name="imagetext" placeholder="képfelirat..."/>
                             <hr>
                         </div>

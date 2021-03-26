@@ -30,3 +30,6 @@ Route::post('/contact/store', [App\Http\Controllers\ContactController::class, 's
 Route::resource('files', App\Http\Controllers\FileController::class)->except(['show']);
 Route::resource('messages', App\Http\Controllers\MessageController::class)->except(['show', 'create']);
 Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
+
+// ordering routes
+Route::post('/messages/order/{dir}', [App\Http\Controllers\MessageController::class, 'order_data']);

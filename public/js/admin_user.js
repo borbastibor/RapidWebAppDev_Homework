@@ -7,10 +7,10 @@ $(function() {
             $.post({
                 type: 'DELETE',
                 url: e.target.href
-            }).done((response) => {
+            }).done(() => {
                 window.location.reload();
             }).fail((response) => {
-                alert(response);
+                jError(response.responseText);
             });
         }
     });

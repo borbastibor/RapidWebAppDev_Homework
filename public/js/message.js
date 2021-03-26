@@ -9,6 +9,8 @@ $(function() {
         }
         $.post(data_store.dataset.post_route, post_data, (response) => {
             $('#contact_form').trigger('reset');
-        }, 'json');
+        }, 'json').fail(() => {
+            jError('Hiba az üzenet küldésekor!');
+        });
     });
 });

@@ -32,7 +32,7 @@
                                     <textarea id="message" class="form-control" name="message" rows="10" placeholder="írja be az üzenetét..." required></textarea>
                                 </div>
                             </form>
-                            <button id="send_message" class="btn btn-success font-weight-bold">Küldés</button>
+                            <button id="send_message" class="btn btn-success font-weight-bold">&#128231; Küldés</button>
                         </div>
                         <div class="col-3">
                             @include('adverts')

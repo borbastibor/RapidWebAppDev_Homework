@@ -23,7 +23,7 @@
                             <textarea class="form-control" id="message" name="message" rows="5">@if ($data) {{ $data->message }} @endif</textarea>
                         </div>
                     </form>
-                    <button id="submit_message" class="btn btn-success font-weight-bold">Mentés</button>
+                    <button id="submit_message" class="btn btn-success font-weight-bold">&#128190; Mentés</button>
                 </div>
             </div>
         </div>

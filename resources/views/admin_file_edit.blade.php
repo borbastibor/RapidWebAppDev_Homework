@@ -27,7 +27,7 @@
                             </select>
                         </div>
                     </form>
-                    <button id="submit_file" class="btn btn-success font-weight-bold">Mentés</button>
+                    <button id="submit_file" class="btn btn-success font-weight-bold">&#128190; Mentés</button>
                 </div>
             </div>
         </div>

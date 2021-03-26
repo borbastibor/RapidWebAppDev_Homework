@@ -34,7 +34,7 @@
                             <input type="password" id="repassword" class="form-control" name="repassword" required></textarea>
                         </div>
                     </form>
-                    <button id="submit_user" class="btn btn-success font-weight-bold">Mentés</button>
+                    <button id="submit_user" class="btn btn-success font-weight-bold">&#128190; Mentés</button>
                 </div>
             </div>
         </div>

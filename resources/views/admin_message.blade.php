@@ -12,7 +12,7 @@
                             <tr>
                                 <th scope="col">Név</th>
                                 <th scope="col">E-mail cím</th>
-                                <th scope="col">Küldés ideje</th>
+                                <th scope="col">Küldés ideje<span class="order-cursor" id="order"> &#128317;</span></th>
                                 <th scope="col">Üzenet</th>
                                 <th scope="col">Lehetőségek</th>
                             </tr>

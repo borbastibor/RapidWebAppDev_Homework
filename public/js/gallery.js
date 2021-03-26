@@ -5,13 +5,13 @@ $(function() {
         if ($('#imagetext').val()) {
             $('#fileinput').trigger('click');
         } else {
-            alert('Adjon meg képfeliratot!');
+            jError('Adjon meg képfeliratot!');
         }
     });
 
     $('#fileinput').on('change', (e) => {
         if (!$('#fileinput').prop('files')[0].name.toLowerCase().match(/.(jpg|jpeg|png)$/i)) {
-            alert('Nem képet képet választott ki!');
+            jError('Nem képet képet választott ki!');
             return;
         }
     
@@ -26,6 +26,10 @@ $(function() {
             contentType: false,
             data: form_data,
             success: () => window.location.reload()
+        }).done(() => { 
+            window.location.reload()
+        }).fail((response) => {
+            jError(response.responseText)
         });
     });
 });

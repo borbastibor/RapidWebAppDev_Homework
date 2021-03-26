@@ -6,6 +6,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -90,5 +91,15 @@ class MessageController extends Controller
         } catch (Exception $e) {
             return new Response('Hiba a törléskor!', 500);
         }
+    }
+
+    /**
+     * Return ordered data
+     * 
+     * @param string $dir
+     * @return Collection
+     */
+    public function order_data($dir) {
+        return DB::table('messages')->orderBy('created_at', $dir)->get();
     }
 }
