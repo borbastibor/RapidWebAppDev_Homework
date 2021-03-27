@@ -33,8 +33,11 @@ class ContactController extends Controller
             $new_message->email = $request->input('email');
             $new_message->message = $request->input('message');
             $new_message->save();
+
+            // $from_header = 'From: webmaster@example.com';
+            // mail('borbi.tibor@gmail.com', 'Message from ' . $new_message->name, $new_message->message, $from_header);
         } catch (Exception $e) {
-            return new Response('Hiba a mentéskor!', 500);
+            return new Response('Hiba a mentéskor!' . $e->getMessage(), 500);
         }
     }
 }

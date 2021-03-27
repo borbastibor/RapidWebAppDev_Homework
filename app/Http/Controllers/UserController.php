@@ -75,21 +75,22 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            if (User::where('name', $request->input('name'))->exists()) {
+            $user = User::find($id);
+
+            if (User::where('name', $request->input('name'))->where('id', '<>', $id)->exists()) {
                 return new Response('A megadott név már létezik!', 500);
             }
 
-            if (User::where('email', $request->input('email'))->exists()) {
+            if (User::where('email', $request->input('email'))->where('id', '<>', $id)->exists()) {
                 return new Response('A megadott e-mail már létezik!', 500);
             }
 
-            $user = User::find($id);
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = Hash::make($request->input('password'));
             $user->save();
         } catch (Exception $e) {
-            return new Response('Hiba a mentés során!', 500);
+            return new Response('Hiba a mentés során!' . $e->getMessage(), 500);
         }
     }
 

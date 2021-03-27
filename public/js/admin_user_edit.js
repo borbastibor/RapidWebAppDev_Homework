@@ -8,7 +8,7 @@ $(function() {
             return;
         }
 
-        if ($('#password').val() == '' || $('#repassword').val() == '') {
+        if ($('#id').val() == 0 && ($('#password').val() == '' || $('#repassword').val() == '')) {
             jError('Nem adott meg jelszót!');
 
             return;

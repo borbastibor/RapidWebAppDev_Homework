@@ -42,7 +42,7 @@
 </div>
 <div style="display:none;"
     id="data_store"
-    data-post_route="@if ($data) {{ route(users.update, ['user' => $data->id]) }} @else {{ route('users.store') }} @endif"
+    data-post_route="@if ($data) {{ route('users.update', ['user' => $data->id]) }} @else {{ route('users.store') }} @endif"
 ></div>
 @endsection
 
