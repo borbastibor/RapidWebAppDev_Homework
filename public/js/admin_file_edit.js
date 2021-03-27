@@ -21,6 +21,7 @@ $(function() {
             processData: false,
             data: form_data
         }).done(() => {
+            alert('Sikeres művelet!');
             window.location.replace('/files');
         }).fail((response) => {
             jError(response.responseText);

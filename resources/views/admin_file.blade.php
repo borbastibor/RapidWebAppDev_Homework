@@ -8,13 +8,13 @@
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Feltöltött fájlok') }}</div>
                 <div class="card-body">
                     <a class="btn bg-success text-white font-weight-bold mb-3" href="{{ route('files.edit', ['file' => 0]) }}">Fájl hozzáadása</a>
-                    <table class="table table-hover table-sm table-bordered text-center">
+                    <table class="table table-hover table-sm table-bordered text-center" id="data_table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Fájlnév</th>
                                 <th scope="col">Leírás</th>
                                 <th scope="col">Típus</th>
-                                <th scope="col">Feltöltés ideje</th>
+                                <th scope="col">Feltöltés ideje<span class="order-cursor" id="order" name="created_at"></span></th>
                                 <th scope="col">Feltöltő</th>
                                 <th scope="col">Lehetőségek</th>
                             </tr>
@@ -38,6 +38,12 @@
         </div>
     </div>
 </div>
+<div style="display:none;"
+    id="data_store"
+    data-post_route={{ url('/file/order') }}
+    data-edit_route={{ route('files.edit', ['file' => 'xxxx']) }}
+    data-delete_route={{ route('files.destroy', ['file' => 'xxxx']) }}
+></div>
 @endsection
 
 @push('scripts')

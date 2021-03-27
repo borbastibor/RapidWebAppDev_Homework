@@ -34,6 +34,7 @@ $(function() {
             url: post_url,
             data: post_data
         }).done(() => {
+            alert('Sikeres művelet!');
             window.location.replace('/messages');
         }).fail((response) => {
             jError(response.responseText);

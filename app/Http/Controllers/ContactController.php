@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
+use Exception;
+use Illuminate\Http\Response;
 
 class ContactController extends Controller
 {
@@ -25,10 +27,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $new_message = new Message();
-        $new_message->name = $request->input('name');
-        $new_message->email = $request->input('email');
-        $new_message->message = $request->input('message');
-        $new_message->save();
+        try {
+            $new_message = new Message();
+            $new_message->name = $request->input('name');
+            $new_message->email = $request->input('email');
+            $new_message->message = $request->input('message');
+            $new_message->save();
+        } catch (Exception $e) {
+            return new Response('Hiba a mentéskor!', 500);
+        }
     }
 }

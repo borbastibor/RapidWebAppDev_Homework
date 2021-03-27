@@ -7,12 +7,12 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Beérkezett üzenetek') }}</div>
                 <div class="card-body">
-                    <table class="table table-hover table-sm table-bordered text-center">
+                    <table class="table table-hover table-sm table-bordered text-center" id="data_table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Név</th>
                                 <th scope="col">E-mail cím</th>
-                                <th scope="col">Küldés ideje<span class="order-cursor" id="order"> &#128317;</span></th>
+                                <th scope="col">Küldés ideje<span class="order-cursor" id="order" name="created_at"></span></th>
                                 <th scope="col">Üzenet</th>
                                 <th scope="col">Lehetőségek</th>
                             </tr>
@@ -35,6 +35,12 @@
         </div>
     </div>
 </div>
+<div style="display:none;"
+    id="data_store"
+    data-post_route={{ url('/message/order') }}
+    data-edit_route={{ route('messages.edit', ['message' => 'xxxx']) }}
+    data-delete_route={{ route('messages.destroy', ['message' => 'xxxx']) }}
+></div>
 @endsection
 
 @push('scripts')

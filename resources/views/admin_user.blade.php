@@ -8,12 +8,12 @@
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Felhasználók') }}</div>
                 <div class="card-body">
                     <a class="btn bg-success text-white font-weight-bold mb-3" href="{{ route('users.edit', ['user' => 0]) }}">Új felhasználó</a>
-                    <table class="table table-hover table-sm table-bordered text-center">
+                    <table class="table table-hover table-sm table-bordered text-center" id="data_table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Név</th>
                                 <th scope="col">E-mail cím</th>
-                                <th scope="col">Regisztráció ideje</th>
+                                <th scope="col">Regisztráció ideje<span class="order-cursor" id="order" name="created_at"></span></th>
                                 <th scope="col">Jogosultság</th>
                                 <th scope="col">Lehetőségek</th>
                             </tr>
@@ -42,6 +42,12 @@
         </div>
     </div>
 </div>
+<div style="display:none;"
+    id="data_store"
+    data-post_route={{ url('/user/order') }}
+    data-edit_route={{ route('users.edit', ['user' => 'xxxx']) }}
+    data-delete_route={{ route('users.destroy', ['user' => 'xxxx']) }}
+></div>
 @endsection
 
 @push('scripts')

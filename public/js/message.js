@@ -7,10 +7,15 @@ $(function() {
             email: $('#email').val(),
             message: $('#message').val()
         }
-        $.post(data_store.dataset.post_route, post_data, (response) => {
+        $.post({
+            method: 'POST',
+            url: data_store.dataset.post_route,
+            data: post_data
+        }).done((response) => {
+            alert('Üzenet sikeresen elküldve!');
             $('#contact_form').trigger('reset');
-        }, 'json').fail(() => {
-            jError('Hiba az üzenet küldésekor!');
+        }).fail((response) => {
+            jError(response.responseText);
         });
     });
 });

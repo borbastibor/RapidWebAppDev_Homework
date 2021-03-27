@@ -35,6 +35,7 @@ $(function() {
             url: post_url,
             data: post_data
         }).done(() => {
+            alert('Sikeres művelet!');
             window.location.replace('/users');
         }).fail((response) => {
             jError(response.responseText);

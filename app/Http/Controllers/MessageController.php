@@ -37,7 +37,6 @@ class MessageController extends Controller
         } catch (Exception $e) {
             return new Response('Hiba a mentéskor!', 500);
         }
-        
     }
 
     /**
@@ -96,10 +95,10 @@ class MessageController extends Controller
     /**
      * Return ordered data
      * 
-     * @param string $dir
+     * @param  \Illuminate\Http\Request  $request
      * @return Collection
      */
-    public function order_data($dir) {
-        return DB::table('messages')->orderBy('created_at', $dir)->get();
+    public function order_data(Request $request) {
+        return Message::orderBy($request->input('column'), $request->input('dir'))->get();
     }
 }

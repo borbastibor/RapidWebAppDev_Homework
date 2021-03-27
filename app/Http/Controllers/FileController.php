@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File as FileFacade;
+use App\Dtos\FileToView;
 
 class FileController extends Controller
 {
@@ -106,6 +107,23 @@ class FileController extends Controller
         } catch (Exception $e) {
             return new Response('Hiba a törlés során!', 500);
         }
+    }
+
+    /**
+     * Return ordered data
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return Collection
+     */
+    public function order_data(Request $request) {
+        $obj_array = [];
+        $files = File::orderBy($request->input('column'), $request->input('dir'))->get();
+
+        foreach ($files as $file) {
+            $obj_array[] = new FileToView($file);
+        }
+
+        return $obj_array;
     }
 
 }

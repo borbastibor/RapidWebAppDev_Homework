@@ -26,7 +26,8 @@ $(function() {
             contentType: false,
             data: form_data,
             success: () => window.location.reload()
-        }).done(() => { 
+        }).done(() => {
+            alert('Sikeres művelet!');
             window.location.reload()
         }).fail((response) => {
             jError(response.responseText)

@@ -116,4 +116,13 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Return ordered data
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return Collection
+     */
+    public function order_data(Request $request) {
+        return User::orderBy($request->input('column'), $request->input('dir'))->get();
+    }
 }

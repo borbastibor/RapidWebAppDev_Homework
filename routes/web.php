@@ -27,9 +27,10 @@ Route::get('/supporter', [App\Http\Controllers\SupportController::class, 'index'
 Route::get('/gallery', [App\Http\Controllers\GalleryController::class, 'index']);
 Route::post('/gallery/store', [App\Http\Controllers\GalleryController::class, 'store']);
 Route::post('/contact/store', [App\Http\Controllers\ContactController::class, 'store']);
+Route::post('/message/order', [App\Http\Controllers\MessageController::class, 'order_data']);
+Route::post('/file/order', [App\Http\Controllers\FileController::class, 'order_data']);
+Route::post('/user/order', [App\Http\Controllers\UserController::class, 'order_data']);
 Route::resource('files', App\Http\Controllers\FileController::class)->except(['show']);
 Route::resource('messages', App\Http\Controllers\MessageController::class)->except(['show', 'create']);
 Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
 
-// ordering routes
-Route::post('/messages/order/{dir}', [App\Http\Controllers\MessageController::class, 'order_data']);
