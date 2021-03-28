@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,22 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('storage/{filename}', function ($filename)
+{
+    $path = storage_path('app/public/' . $filename);
 
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = new Response($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index']);
@@ -33,4 +50,3 @@ Route::post('/user/order', [App\Http\Controllers\UserController::class, 'order_d
 Route::resource('files', App\Http\Controllers\FileController::class)->except(['show']);
 Route::resource('messages', App\Http\Controllers\MessageController::class)->except(['show', 'create']);
 Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
-
