@@ -7,10 +7,10 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Fájl hozzáadása/szerkesztése') }}</div>
                 <div class="card-body">
-                    <a class="btn bg-info text-white font-weight-bold mb-3" id="to_list_link" href="/files">&#8678; Vissza</a>
+                    <a class="btn bg-info text-white font-weight-bold mb-3" id="to_list_link" href="{{ url('/files') }}">&#8678; Vissza</a>
                     <form id="user_form">
                         <input type="hidden" id="id" name="id" value="@if ($data) {{ $data->id }} @else {{ 0 }} @endif"/>
-                        @if ($data) <label class="font-weight-bold" for="fileinput">Feltöltött fájl: </label>{{ ' ' . $data->orig_name }} @endif
+                        @if ($data) <label class="font-weight-bold" for="fileinput">Feltöltött fájl: </label> <a href="{{ url('storage/' . $data->id . '.' . $data->extension) }}">{{ $data->orig_name }}</a> @endif
                         <div class="form-group">
                             <label class="font-weight-bold" for="fileinput">Új fájl feltöltése:</label><br>
                             <input type="file" id="fileinput" name="fileinput" accept="image/*"/>

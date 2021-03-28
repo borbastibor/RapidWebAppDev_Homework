@@ -7,7 +7,7 @@
             <div class="card mt-2">
                 <div class="card-header bg-secondary shadow-sm text-white font-weight-bold">{{ __('Felhasználó hozzáadása/szerkesztése') }}</div>
                 <div class="card-body">
-                    <a class="btn bg-info text-white font-weight-bold mb-3" id="to_list_link" href="/users">&#8678; Vissza</a>
+                    <a class="btn bg-info text-white font-weight-bold mb-3" id="to_list_link" href="{{ url('/users') }}">&#8678; Vissza</a>
                     <form id="user_form">
                         <input type="hidden" id="id" name="id" value="@if ($data) {{ $data->id }} @else {{ 0 }} @endif"/>
                         <div class="form-group">
