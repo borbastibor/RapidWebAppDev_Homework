@@ -27,6 +27,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->input('name') == '' || $request->input('email') == '' || $request->input('message') == '') {
+            return new Response('Nincs kitöltve minden mező!', 500);
+        }
+
         try {
             $new_message = new Message();
             $new_message->name = $request->input('name');

@@ -11,7 +11,7 @@ $(function() {
 
     $('#fileinput').on('change', (e) => {
         if (!$('#fileinput').prop('files')[0].name.toLowerCase().match(/.(jpg|jpeg|png)$/i)) {
-            jError('Nem képet képet választott ki!');
+            jError('Nem megfelelő kiterjesztésű képet választott ki!');
             return;
         }
     
